@@ -244,7 +244,8 @@ def alex_calcoccg(gamma, J_MO, K_MO, H_core, p):
 def alex_ocupacion_softmax(x, no1, ndoc, nalpha, nv, nbf5, ndns, ncwo, HighSpin):
     """Transform gammas to n according to the softmax 
     parameterization of the occupation numbers"""
-
+    print('haha')
+    assert 0 
     n = jnp.zeros((nbf5))
     dn_dx = jnp.zeros((nbf5, nv))
 
