@@ -1,0 +1,50 @@
+pynof
+Energy PNOF5 6-31G
+Number of atoms                            I                2
+Charge                                     I                0
+Multiplicity                               I                1
+Number of electrons                        I                2
+Number of alpha electrons                  I                1
+Number of beta electrons                   I                1
+Number of basis functions                  I                4
+Number of independant functions            I                4
+Number of contracted shells                I                4
+Highest angular momentum                   I                0
+Largest degree of contraction              I                3
+Number of primitive shells                 I                8
+Atomic numbers                             I   N=           2
+           1           1
+Nuclear Charges                            R   N=           2
+  1.00000000e+00  1.00000000e+00
+Current cartesian coordinates              R   N=           6
+  0.00000000e+00  0.00000000e+00 -6.61404144e-01  0.00000000e+00  0.00000000e+00
+  6.61404144e-01
+Shell types                                I   N=           4
+           0           0           0           0
+Number of primitives per shell             I   N=           4
+           3           1           3           1
+Shell to atom map                          I   N=           4
+           1           1           2           2
+Coordinates of each shell                  R   N=          12
+  0.00000000e+00  0.00000000e+00 -6.61404144e-01  0.00000000e+00  0.00000000e+00
+ -6.61404144e-01  0.00000000e+00  0.00000000e+00  6.61404144e-01  0.00000000e+00
+  0.00000000e+00  6.61404144e-01
+Total Energy                               R     -1.150155959767248e+00
+Primitive exponents                        R   N=           8
+  1.87311370e+01  2.82539370e+00  6.40121700e-01  1.61277800e-01  1.87311370e+01
+  2.82539370e+00  6.40121700e-01  1.61277800e-01
+Contraction coefficients                   R   N=           8
+  3.34946000e-02  2.34726950e-01  8.13757330e-01  1.00000000e+00  3.34946000e-02
+  2.34726950e-01  8.13757330e-01  1.00000000e+00
+Alpha Orbital Energies                     R   N=           4
+ -6.22523265e-01 -1.47391464e-02 -4.67195575e-03 -2.55717789e-04
+Alpha MO coefficients                      R   N=          16
+  3.36825388e-01  2.58595254e-01  3.36769001e-01  2.58680100e-01  7.77867014e-01
+  6.50102747e-01 -7.77965329e-01 -6.50025153e-01  7.46938867e-01 -6.84873999e-01
+  7.46808640e-01 -6.84862925e-01 -8.65550307e-01  2.19270605e+00  8.65596258e-01
+ -2.19272251e+00
+Total SCF Density                          R   N=           10
+  2.39552931e-01  1.78986959e-01  1.44395867e-01  2.14396292e-01  1.59211526e-01
+  2.39480042e-01  1.59298791e-01  1.24781743e-01  1.79015156e-01  1.44480367e-01
+Natural orbital occupancies                R   N=            4
+  9.86907159e-01  1.02248502e-02  2.74460409e-03  1.23386633e-04
