@@ -24,25 +24,32 @@ mol = pynof.molecule("""
 """)
 
 
-p = pynof.param(mol,"cc-pvdz")
+p = pynof.param(mol,"6-31G")
 
 p.ipnof = 5
-p.set_ncwo(2)
+# p.set_ncwo(2)
 
 p.RI = True
 
 cj12,ck12,gamma,J_MO,K_MO,H_core,grad = pynof.compute_energy(mol,p,gradients=True)
-n, dn_dgamma = ocupacion(gamma, p.no1, p.ndoc, p.nalpha, p.nv, p.nbf5, p.ndns, p.ncwo, p.HighSpin, p.occ_method)
+n, dn_dgamma = ocupacion(gamma, p.no1, p.ndoc, p.nalpha, p.nv, p.nbf5, p.ndns, p.ncwo, p.HighSpin, 'Softmax')
 
+
+# n = n[::-1]
+print('n',n)
+
+# print('JMO',J_MO)
+# print('KMO',K_MO) 
 #Define energy as a lambda function
 E_n = lambda n: alex_calce(n, cj12, ck12, J_MO, K_MO, H_core, p)
 
 #First calculating the gradient using jacfwd and then taking the second derivative to find the Hessian
 grad_E_n = jax.jacfwd(E_n,argnums=0)
-print(grad_E_n(n))
+# print(grad_E_n(n))
 hessian = jax.jacrev(grad_E_n,argnums=0)
-print('Hessian_using_gradient',hessian(n)) 
+print('Hessian_n',hessian(n)) 
 
+assert 0 
 #Calculating the Hessian using the jax.hessian function
 hess_ = jax.hessian(E_n,argnums=0)
 H_n = hess_(n)
@@ -58,3 +65,5 @@ print('Gradient of E wrt n',dE_dn)
 d_E_gamma = lambda gamma :alex_calcoccg(gamma, J_MO, K_MO, H_core, p)
 H_gamma =jax.jacobian(d_E_gamma)(gamma)
 print('H_gamma',H_gamma)
+
+

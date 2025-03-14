@@ -7,7 +7,7 @@ import jax
 
 
 
-def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,mbpt=False,gradients=False,printmode=True,ekt=False,mulliken_pop=False,lowdin_pop=False,m_diagnostic=False,perturb=False,erpa=False,iter_erpa=0):
+def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,mbpt=False, gradients=False,printmode=True,ekt=False,mulliken_pop=False,lowdin_pop=False,m_diagnostic=False,perturb=False,erpa=False,iter_erpa=0):
     """Compute Natural Orbital Functional single point energy"""
     t1 = time()    
     wfn = p.wfn
@@ -109,7 +109,7 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
        
         #occopt
         E_occ,nit_occ,success_occ,gamma,n,cj12,ck12 = pynof.occoptr(gamma,C,H,I,b_mnl,p)
-
+    
         # print('nit_occ',nit_occ)
         # print('success_occ',success_occ)
         #t3 = time()
@@ -235,8 +235,7 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
 
     
     if gradients:
-        grad = pynof.compute_geom_gradients(wfn,mol,n,C,cj12,ck12,elag,p)
-        return cj12,ck12,gamma,J_MO,K_MO,H_core,grad
+        return cj12,ck12,gamma,J_MO,K_MO,H_core,n
     else:
         return E_t,C,n,fmiug0
 

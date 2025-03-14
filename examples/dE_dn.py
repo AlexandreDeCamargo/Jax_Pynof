@@ -34,6 +34,9 @@ p.RI = True
 
 
 cj12,ck12,gamma,J_MO,K_MO,H_core,grad = pynof.compute_energy(mol,p,gradients=True)
+# print('cj12',cj12)
+# print('ck12',ck12)
+# assert 0 
 n, dn_dgamma = ocupacion(gamma, p.no1, p.ndoc, p.nalpha, p.nv, p.nbf5, p.ndns, p.ncwo, p.HighSpin, p.occ_method)
 # print('n',n.shape)
 # assert 0 

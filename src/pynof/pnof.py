@@ -733,7 +733,7 @@ def ocupacion_trigonometric(gamma,no1,ndoc,nalpha,nv,nbf5,ndns,ncwo,HighSpin):
 def ocupacion_softmax(x,no1,ndoc,nalpha,nv,nbf5,ndns,ncwo,HighSpin):
     """Transform gammas to n according to the softmax 
     parameterization of the occupation numbers"""
-
+    
     n = np.zeros((nbf5))
     dn_dx = np.zeros((nbf5,nv))
 
