@@ -14,11 +14,14 @@ from energy import *
 mol = pynof.molecule("""
 0 1
   H  0.0000     0.0000  0.0000
-  H  0.0000     0.0000  0.7000
+  H  0.0000     0.0000  1.1000
 """)
-p = pynof.param(mol,'aug-cc-pvdz')#"6-31g")
-p.ipnof = 7
+p = pynof.param(mol,'cc-pvtz')#"6-31g" 'aug-cc-pvdz')
+p.ipnof = 5
 #p.set_ncwo(1)
 p.RI = True
+p.occ_method = "Softmax"
+p.orb_method=="ADAM"
 J_MO, K_MO, H_core, xss, Cs, Es_t = compute_energy_conv(mol,p,C=None,guess=None)
 plots(J_MO,K_MO,H_core,xss,Cs,Es_t,p)
+plots_joint(J_MO,K_MO,H_core,xss,Cs,Es_t,p)

@@ -234,19 +234,64 @@ def E_step(J_MO,K_MO,H_core,xs,p):
 
     return np.array(Es_n), np.array(results)
 
-def plots(J_MO,K_MO,H_core,xss,Cs,Es_t,p):
+# def plots(J_MO,K_MO,H_core,xss,Cs,Es_t,p):
+# #This one plots all in the same one, looks bad
+#     for i,C in enumerate(Cs):
+#         Es_n, results = E_step(J_MO,K_MO,H_core,xss[i],p)
+#         colors = np.where(results, 'green', 'red')
+    
+#         plt.plot(range(len(Es_n)), Es_n, color='black', linestyle='-', linewidth=2)
+#         plt.scatter(range(len(Es_n)), Es_n, c=colors, edgecolor='black',s=200)
+        
+#         plt.xlabel("Iteration",size=25)
+#         plt.ylabel("Energy (Ha)",size=25)
+#         plt.xticks(fontsize=16)
+#         plt.yticks(fontsize=16)
+#         plt.plot(Es_n)
+#         filename = f"graph_{i}.png"
+#         plt.savefig(filename, format='png', dpi=600, bbox_inches='tight')
 
-    for i,C in enumerate(Cs):
-        Es_n, results = E_step(J_MO,K_MO,H_core,xss[i],p)
+def plots_joint(J_MO, K_MO, H_core, xss, Cs, Es_t, p):
+    plt.figure(figsize=(12, 8))  # Create a single figure
+
+    total_iterations = 0  # Track x-axis shifts for each graph
+
+    for i, C in enumerate(Cs):
+        Es_n, results = E_step(J_MO, K_MO, H_core, xss[i], p)
         colors = np.where(results, 'green', 'red')
+        
+        x_vals = range(total_iterations, total_iterations + len(Es_n))  # Adjust x-axis to continue from last
+        plt.plot(x_vals, Es_n, color='black', linestyle='-', linewidth=2)
+        plt.scatter(x_vals, Es_n, c=colors, edgecolor='black', s=100)
+        
+        total_iterations += len(Es_n)  # Update x-axis shift for next plot
     
+    # Formatting
+    plt.xlabel("Iteration", size=25, labelpad=10)
+    plt.ylabel("Energy (Ha)", size=25, labelpad=10)
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+
+    filename = "concatenated_graph.png"
+    plt.savefig(filename, format='png', dpi=600, bbox_inches='tight')
+    
+
+def plots(J_MO, K_MO, H_core, xss, Cs, Es_t, p):
+#This one saves each iteration on a new file
+    for i, C in enumerate(Cs):
+        Es_n, results = E_step(J_MO, K_MO, H_core, xss[i], p)
+        colors = np.where(results, 'green', 'red')
+        
+        plt.figure(figsize=(12, 8))
         plt.plot(range(len(Es_n)), Es_n, color='black', linestyle='-', linewidth=2)
-        plt.scatter(range(len(Es_n)), Es_n, c=colors, edgecolor='black',s=200)
-    
-        plt.xlabel("Iteration",size=25)
-        plt.ylabel("Energy (Ha)",size=25)
-        plt.xticks(fontsize=20)
-        plt.yticks(fontsize=20)
-        plt.plot(Es_n)
+        plt.scatter(range(len(Es_n)), Es_n, c=colors, edgecolor='black', s=200)
+        
+        plt.xlabel("Iteration", size=25)
+        plt.ylabel("Energy (Ha)", size=25)
+        plt.xticks(fontsize=16)
+        plt.yticks(fontsize=16)
+        
         filename = f"graph_{i}.png"
-        plt.savefig(filename, format='png', dpi=600)
+        plt.savefig(filename, format='png', dpi=600,bbox_inches='tight')
+        plt.close()  # Close the figure to free memory
+
