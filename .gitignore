@@ -4,3 +4,6 @@ dist
 *.png
 *.npy
 *.dat
+src/pynof/__pycache__/*.cpython-312.*
+src/pynof/__pycache__/*
+src/pynof/__pycache__
