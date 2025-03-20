@@ -219,7 +219,7 @@ def E_step(J_MO,K_MO,H_core,xs,p):
 
     for i,x in enumerate(xs):
 
-        n, _ = pynof.ocupacion(x, p.no1, p.ndoc, p.nalpha, p.nv, p.nbf5, p.ndns, p.ncwo, p.HighSpin, 'Softmax')
+        n, _ = pynof.ocupacion(x, p.no1, p.ndoc, p.nalpha, p.nv, p.nbf5, p.ndns, p.ncwo, p.HighSpin, p.occ_method)
 
         cj12, ck12 = pynof.PNOFi_selector(n,p)
 
