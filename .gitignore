@@ -1,1 +1,6 @@
 */*.pyc
+dist
+*.fchk
+*.png
+*.npy
+*.dat
