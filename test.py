@@ -16,7 +16,7 @@ mol = pynof.molecule("""
   H  0.0000     0.0000  0.0000
   H  0.0000     0.0000  1.1000
 """)
-p = pynof.param(mol,'cc-pvtz')#"6-31g" 'aug-cc-pvdz')
+p = pynof.param(mol,'6-311g')#"6-31g" 'aug-cc-pvdz')
 p.ipnof = 5
 #p.set_ncwo(1)
 p.RI = True
